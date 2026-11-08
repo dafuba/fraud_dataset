@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fraud-detection"
+version = "1.0.0"
+description = "End-to-end fraud detection: leakage audit, hard-mode modelling, cost-based decisioning, explainability, API and dashboard."
+requires-python = ">=3.10"
+dependencies = [
+  "pandas>=2.1",
+  "numpy>=1.26",
+  "scikit-learn>=1.4",
+  "matplotlib>=3.8",
+  "seaborn>=0.13",
+  "joblib>=1.3",
+  "shap>=0.44",
+]
+
+[project.optional-dependencies]
+boosting = ["xgboost>=2.0", "lightgbm>=4.0"]
+serve = ["fastapi>=0.110", "uvicorn[standard]>=0.27", "pydantic>=2.5", "streamlit>=1.30"]
+dev = ["pytest>=8", "httpx>=0.27", "nbformat", "nbclient", "nbconvert", "ipykernel"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

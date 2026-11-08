@@ -1,0 +1,174 @@
+{
+  "name": "fraud-detection",
+  "version": "1.0.0",
+  "trained_at": "2026-11-08T11:40:03+00:00",
+  "model": "HistGradientBoostingClassifier",
+  "seed": 42,
+  "data": {
+    "path": "/Users/dafuba/projects/fraud_dataset/synthetic_fraud_dataset.csv",
+    "sha256_16": "85125cc74e43c995",
+    "rows": 10000,
+    "fraud_rate": 0.05
+  },
+  "cost_model": {
+    "review_cost": 5,
+    "chargeback_fee": 15,
+    "recovery_rate": 0.0,
+    "block_friction_cost": 25
+  },
+  "environment": {
+    "python": "3.12.15",
+    "scikit_learn": "1.9.1",
+    "pandas": "3.1.1",
+    "numpy": "2.5.4"
+  },
+  "modes": {
+    "full": {
+      "mode": "full",
+      "features": [
+        "transaction_type_ATM",
+        "transaction_type_Online",
+        "transaction_type_POS",
+        "transaction_type_QR",
+        "merchant_category_Clothing",
+        "merchant_category_Electronics",
+        "merchant_category_Food",
+        "merchant_category_Grocery",
+        "merchant_category_Travel",
+        "country_DE",
+        "country_FR",
+        "country_NG",
+        "country_TR",
+        "country_UK",
+        "country_US",
+        "amount",
+        "hour",
+        "log_amount",
+        "is_night",
+        "is_micro_amount",
+        "hour_sin",
+        "hour_cos",
+        "device_risk_score",
+        "ip_risk_score",
+        "risk_total",
+        "risk_max",
+        "amount_x_risk",
+        "user_txn_count",
+        "user_mean_amount",
+        "amount_ratio_to_user",
+        "amount_z_user",
+        "user_night_share"
+      ],
+      "n_features": 32,
+      "review_threshold": 0.28,
+      "three_way": {
+        "review_threshold": 0.28,
+        "block_threshold": 0.3
+      },
+      "holdout_metrics": {
+        "threshold": 0.28,
+        "PR-AUC": 1.0,
+        "ROC-AUC": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "n_flagged": 100
+      },
+      "holdout_policy": {
+        "approve": {
+          "transactions": 1900.0,
+          "frauds": 0.0,
+          "fraud_rate": 0.0,
+          "amount": 187332.5536482179,
+          "share_of_volume": 0.95
+        },
+        "review": {
+          "transactions": 0.0,
+          "frauds": 0.0,
+          "fraud_rate": 0.0,
+          "amount": 0.0,
+          "share_of_volume": 0.0
+        },
+        "block": {
+          "transactions": 100.0,
+          "frauds": 100.0,
+          "fraud_rate": 1.0,
+          "amount": 185150.51902425458,
+          "share_of_volume": 0.05
+        }
+      },
+      "artifact": "fraud_pipeline_full.joblib"
+    },
+    "hardmode": {
+      "mode": "hardmode",
+      "features": [
+        "transaction_type_ATM",
+        "transaction_type_Online",
+        "transaction_type_POS",
+        "transaction_type_QR",
+        "merchant_category_Clothing",
+        "merchant_category_Electronics",
+        "merchant_category_Food",
+        "merchant_category_Grocery",
+        "merchant_category_Travel",
+        "country_DE",
+        "country_FR",
+        "country_NG",
+        "country_TR",
+        "country_UK",
+        "country_US",
+        "amount",
+        "hour",
+        "log_amount",
+        "is_night",
+        "is_micro_amount",
+        "hour_sin",
+        "hour_cos",
+        "user_txn_count",
+        "user_mean_amount",
+        "amount_ratio_to_user",
+        "amount_z_user",
+        "user_night_share"
+      ],
+      "n_features": 27,
+      "review_threshold": 0.03,
+      "three_way": {
+        "review_threshold": 0.08,
+        "block_threshold": 0.98
+      },
+      "holdout_metrics": {
+        "threshold": 0.03,
+        "PR-AUC": 0.991351293299984,
+        "ROC-AUC": 0.9989,
+        "precision": 0.9702970297029703,
+        "recall": 0.98,
+        "f1": 0.9751243781094527,
+        "n_flagged": 101
+      },
+      "holdout_policy": {
+        "approve": {
+          "transactions": 1899.0,
+          "frauds": 2.0,
+          "fraud_rate": 0.00105318588730911,
+          "amount": 187242.43290436929,
+          "share_of_volume": 0.9495
+        },
+        "review": {
+          "transactions": 9.0,
+          "frauds": 6.0,
+          "fraud_rate": 0.6666666666666666,
+          "amount": 1039.594746269391,
+          "share_of_volume": 0.0045
+        },
+        "block": {
+          "transactions": 92.0,
+          "frauds": 92.0,
+          "fraud_rate": 1.0,
+          "amount": 184201.04502183382,
+          "share_of_volume": 0.046
+        }
+      },
+      "artifact": "fraud_pipeline_hardmode.joblib"
+    }
+  }
+}

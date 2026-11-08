@@ -1,0 +1,10 @@
+name: fraud-detection
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - llvm-openmp        # needed by xgboost / lightgbm wheels on macOS
+  - pip
+  - pip:
+      - -r requirements.txt
+      - -e .
